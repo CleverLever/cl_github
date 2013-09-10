@@ -1,7 +1,5 @@
 <?php
-class Cl_google_apis_model extends CI_Model {
-	
-	public $has_table = FALSE;
+class Cl_github_model extends CI_Model {
 
 	public $data;
 	
@@ -21,7 +19,7 @@ class Cl_google_apis_model extends CI_Model {
 	 */
 	public function create_table() 
 	{
-		if (empty($this->table)) die("No table defined in model. Should this model have $has_table set to FALSE?");
+		if (empty($this->table)) die('No table defined in ' . get_class($this) . '.');
 		$this->dbforge->add_field($this->table_fields);
 		foreach($this->primary_keys as $key) $this->dbforge->add_key($key, TRUE);
 
