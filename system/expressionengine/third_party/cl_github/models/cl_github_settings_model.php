@@ -3,7 +3,8 @@ require_once(__DIR__.'/cl_github_model.php');
 
 class Cl_github_settings_model extends Cl_github_model
 {
-	protected $table = "cl_github_settings";
+	public $table = "cl_github_settings";
+
 	protected $table_fields = array(
 		'site_id'	=> array(
 			'type'			=> 'int',

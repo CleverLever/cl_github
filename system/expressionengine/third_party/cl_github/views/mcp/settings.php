@@ -14,15 +14,9 @@ $(function () {
 <table class="mainTable" border="0" cellspacing="0" cellpadding="0">
 	<tr><th colspan="2">Global Settings</th></th></tr>
 	<tr>
-		<td><label>Authorize.net API Login ID</label><div class="subtext">Login ID for payment gateway.</div></td>
+		<td><label>Personal Access Token</label><div class="subtext">Found at <a href="https://github.com/settings/applications">https://github.com/settings/applications</a>.</div></td>
 		<td>
-			<input type="text" name="settings[authorizenet_api_login_id]" value="<?php echo @$settings->get('authorizenet_api_login_id'); ?>">
-		</td>
-	</tr>
-	<tr>
-		<td><label>Authorize.net Transaction Key</label><div class="subtext">Transaction key for payment gateway.</div></td>
-		<td>
-			<input type="text" name="settings[authorizenet_transaction_key]" value="<?php echo @$settings->get('authorizenet_transaction_key'); ?>">
+			<input type="text" name="settings[api_access_token]" value="<?php echo @$settings->get('api_access_token'); ?>">
 		</td>
 	</tr>
 </table>

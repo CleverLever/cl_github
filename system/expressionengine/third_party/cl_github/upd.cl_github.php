@@ -1,6 +1,6 @@
 <?php
 
-class Cl_google_apis_upd 
+class Cl_github_upd 
 {
 	public $version = "1.0.0";
 	
@@ -9,7 +9,9 @@ class Cl_google_apis_upd
 	private $has_publish_fields = "n";
 	private $settings = array();
 
-	private $mod_actions = array();
+	private $mod_actions = array(
+		'oauth_callback',
+	);
 
 	public function __construct() 
 	{
@@ -27,8 +29,8 @@ class Cl_google_apis_upd
 
 	function uninstall() 
 	{
+		$this->_uninstall_module();
 		$this->_uninstall_actions();
-		$this->_uninstall_modules();
 		$this->_uninstall_models();
 
 		return TRUE;
@@ -77,10 +79,10 @@ class Cl_google_apis_upd
 	{
 		foreach (glob(dirname(__FILE__) . "/models/*.php") as $model)
 		{
-			$model = pathinfo($model, PATHINFO_FILENAME);
+			$model = ucfirst(pathinfo($model, PATHINFO_FILENAME));
 
 			ee()->load->model($model);
-			if (ee()->$model->has_table) ee()->$model->create_table();
+			if (isset(ee()->$model->table)) ee()->$model->create_table();
 		}
 	}
 	
@@ -88,10 +90,10 @@ class Cl_google_apis_upd
 	{
 		foreach (glob(dirname(__FILE__) . "/models/*.php") as $model)
 		{
-			$model = pathinfo($model, PATHINFO_FILENAME);
+			$model = ucfirst(pathinfo($model, PATHINFO_FILENAME));
 
 			ee()->load->model($model);
-			if (ee()->$model->has_table) ee()->$model->drop_table();
+			if (isset(ee()->$model->table)) ee()->$model->drop_table();
 		}
 	}
 }
