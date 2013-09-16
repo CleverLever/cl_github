@@ -172,4 +172,23 @@ class Cl_github
 			array($data)
 		);
 	}
+	
+	public function repository() 
+	{
+		$owner = $this->EE->TMPL->fetch_param('owner');
+		$repo = $this->EE->TMPL->fetch_param('repo');
+		$tag_prefix = $this->EE->TMPL->fetch_param('tag_prefix');
+		
+		$data = $this->client->api('repo')->show($owner, $repo);
+		
+		if (empty($data)) return $this->EE->TMPL->no_results();
+
+		$data = cl_convert_hashmaps_to_sequences($data);	
+		$data = cl_prefix_array_keys($tag_prefix, $data);
+	
+		return $this->EE->TMPL->parse_variables(
+			$this->EE->TMPL->tagdata, 
+			array($data)
+		);
+	}
 }
