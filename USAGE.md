@@ -10,7 +10,7 @@ Configuration
 -----
 
 You'll need to obtain a personal access token (for your user, not organization) [here](https://github.com/settings/applications). 
-You can then add this to the configuration under Add-ons -> GitHub -> Global Settings
+You can then add this to the configuration under `Add-ons -> GitHub -> Global Settings`.
 
 Tags
 -----
