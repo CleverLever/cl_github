@@ -8,7 +8,7 @@ class Cl_github_mcp
 		ee()->load->model('Cl_github_settings_model');
 
 		ee()->cp->set_right_nav(array(
-			'settings' => BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=cl_github',
+			'Global Settings' => BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=cl_github',
 		));
 	}
 	public function index() { ee()->functions->redirect(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=cl_github'.AMP.'method=settings'); }
