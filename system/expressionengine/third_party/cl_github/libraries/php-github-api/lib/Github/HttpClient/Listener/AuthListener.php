@@ -112,7 +112,7 @@ class AuthListener implements ListenerInterface
     {
         $url  = $request->getUrl();
         $url .= (false === strpos($url, '?') ? '?' : '&').utf8_encode(http_build_query($parameters, '', '&'));
-
+error_log($url);
         $request->fromUrl(new Url($url));
     }
 }
