@@ -4,7 +4,7 @@ Usage
 Installation
 -----
 
-Copy `/third_party/cl_github` into `/system/expressionengine/third_party`.
+Copy `/third_party/cl_github_api` into `/system/expressionengine/third_party`.
 
 Configuration
 -----
@@ -15,7 +15,7 @@ You can then add this to the configuration under `Add-ons -> GitHub -> Global Se
 Tags
 -----
 
-### {exp:cl_github:user_repos}
+### {exp:cl_github_api:user_repos}
 
 Lists repositories for the specified user.
 
@@ -45,7 +45,7 @@ Lists repositories for the specified user.
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/repos/#response).
 
-### {exp:cl_github:repo_contents_archive}
+### {exp:cl_github_api:repo_contents_archive}
 
 Outputs the repo contents archive as a full http response.
 
@@ -67,7 +67,7 @@ Outputs the repo contents archive as a full http response.
 
   Valid Git reference (sha, tag, etc.)
 
-### {exp:cl_github:repo_downloads}
+### {exp:cl_github_api:repo_downloads}
 
 Lists package downloads available for a repository.
 
@@ -89,7 +89,7 @@ Lists package downloads available for a repository.
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/repos/downloads/#response) as EE template tags.
 
-### {exp:cl_github:repo_tags}
+### {exp:cl_github_api:repo_tags}
 
 Lists tags for a given repository.
 
@@ -119,7 +119,7 @@ Lists tags for a given repository.
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/repos/#response-8) as EE template tags.
 
-### {exp:cl_github:repo_issues}
+### {exp:cl_github_api:repo_issues}
 
 Lists issues for a given repo.
 
@@ -153,7 +153,7 @@ Lists issues for a given repo.
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/issues/#response-1) as EE template tags.
 
-### {exp:cl_github:repo_milestones}
+### {exp:cl_github_api:repo_milestones}
 
 Lists milestones for a given repo.
 
@@ -191,7 +191,7 @@ Lists milestones for a given repo.
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/issues/#response-1) as EE template tags.
 
-### {exp:cl_github:repo_issue_comments}
+### {exp:cl_github_api:repo_issue_comments}
 
 Lists comments for a given issue.
 
@@ -217,7 +217,7 @@ Lists comments for a given issue.
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/issues/comments/#response) as EE template tags.
 
-### {exp:cl_github:repo_commit}
+### {exp:cl_github_api:repo_commit}
 
 Returns information about a specific commit.
 
@@ -244,7 +244,7 @@ Returns information about a specific commit.
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/git/commits/#response) as EE template tags.
 
 
-### {exp:cl_github:repo_path_contents}
+### {exp:cl_github_api:repo_path_contents}
 
 Get information and contents of a file or directory.
 
@@ -274,7 +274,7 @@ Get information and contents of a file or directory.
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/git/contents/#response-if-content-is-a-file) as EE template tags.
 
-### {exp:cl_github:repo}
+### {exp:cl_github_api:repo}
 
 Get information about a specific repository.
 
