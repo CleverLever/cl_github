@@ -5,27 +5,29 @@ class Cl_github_api_mcp
 	
 	public function __construct() 
 	{
-		ee()->load->model('Cl_github_api_settings_model');
+		$this->EE &= get_instance();
+		
+		$this->EE->load->model('Cl_github_api_settings_model');
 
-		ee()->cp->set_right_nav(array(
+		$this->EE->cp->set_right_nav(array(
 			'Global Settings' => BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=cl_github_api',
 		));
 	}
-	public function index() { ee()->functions->redirect(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=cl_github_api'.AMP.'method=settings'); }
+	public function index() { $this->EE->functions->redirect(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=cl_github_api'.AMP.'method=settings'); }
 	
 	public function settings() 
 	{
-		ee()->cp->set_variable('cp_page_title', lang('cl_github_api_module_name') . " (" . ucwords(str_replace("_", " ", __FUNCTION__)) . ")");
+		$this->EE->cp->set_variable('cp_page_title', lang('cl_github_api_module_name') . " (" . ucwords(str_replace("_", " ", __FUNCTION__)) . ")");
 		
 		if (!empty($_POST)) {
 			foreach ($_POST['settings'] as $key => $value) 
 			{
-				ee()->Cl_github_api_settings_model->set($key, $value);
+				$this->EE->Cl_github_api_settings_model->set($key, $value);
 			}
-			ee()->functions->redirect(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module='.$this->addon_name.AMP.'method=settings');
+			$this->EE->functions->redirect(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module='.$this->addon_name.AMP.'method=settings');
 		}
 
-		return ee()->load->view("mcp/" . __FUNCTION__, array('settings' => ee()->Cl_github_api_settings_model), TRUE);
+		return $this->EE->load->view("mcp/" . __FUNCTION__, array('settings' => $this->EE->Cl_github_api_settings_model), TRUE);
 	}
 
 	public function get_access_token() 

@@ -15,7 +15,8 @@ class Cl_github_api_upd
 
 	public function __construct() 
 	{
-		ee()->load->add_package_path(dirname(__FILE__));
+		$this->EE &= get_instance();
+		$this->EE->load->add_package_path(dirname(__FILE__));
 	}
 
 	function install()
@@ -45,34 +46,34 @@ class Cl_github_api_upd
 			'has_publish_fields' => $this->has_publish_fields,
 			'settings' => json_encode($this->settings),
 		);
-		ee()->db->insert('modules', $data);
+		$this->EE->db->insert('modules', $data);
 	}
 
 	private function _uninstall_module() 
 	{
-		ee()->db->delete('modules', array('module_name' => $this->addon_name));
+		$this->EE->db->delete('modules', array('module_name' => $this->addon_name));
 	}
 	
 	private function _install_actions() 
 	{
 		// get existing actions
-		ee()->db->select('method')
+		$this->EE->db->select('method')
 			->from('actions')
 			->like('class', $this->addon_name, 'after');
 		$existing_methods = array();
-		foreach (ee()->db->get()->result() as $row) $existing_methods[] = $row->method;
+		foreach ($this->EE->db->get()->result() as $row) $existing_methods[] = $row->method;
 
 		// insert new actions
 		foreach ($this->mod_actions as $method)	{
 			if ( ! in_array($method, $existing_methods)) {
-				ee()->db->insert('actions', array('class' => $this->addon_name, 'method' => $method));
+				$this->EE->db->insert('actions', array('class' => $this->addon_name, 'method' => $method));
 			}
 		}
 	}
 	
 	private function _uninstall_actions()
 	{
-		ee()->db->like('class', $this->addon_name, 'after')->delete('actions');
+		$this->EE->db->like('class', $this->addon_name, 'after')->delete('actions');
 	}
 	
 	private function _install_models()
@@ -81,8 +82,8 @@ class Cl_github_api_upd
 		{
 			$model = ucfirst(pathinfo($model, PATHINFO_FILENAME));
 
-			ee()->load->model($model);
-			if (isset(ee()->$model->table)) ee()->$model->create_table();
+			$this->EE->load->model($model);
+			if (isset($this->EE->$model->table)) $this->EE->$model->create_table();
 		}
 	}
 	
@@ -92,8 +93,8 @@ class Cl_github_api_upd
 		{
 			$model = ucfirst(pathinfo($model, PATHINFO_FILENAME));
 
-			ee()->load->model($model);
-			if (isset(ee()->$model->table)) ee()->$model->drop_table();
+			$this->EE->load->model($model);
+			if (isset($this->EE->$model->table)) $this->EE->$model->drop_table();
 		}
 	}
 }
