@@ -43,8 +43,7 @@ class Cl_github_api_upd
 			'module_name' => $this->addon_name,
 			'module_version' => $this->version,
 			'has_cp_backend' => $this->has_cp_backend,
-			'has_publish_fields' => $this->has_publish_fields,
-			'settings' => json_encode($this->settings),
+			'has_publish_fields' => $this->has_publish_fields
 		);
 		$this->EE->db->insert('modules', $data);
 	}
