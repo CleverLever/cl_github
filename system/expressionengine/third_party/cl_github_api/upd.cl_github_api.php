@@ -2,7 +2,7 @@
 
 class Cl_github_api_upd 
 {
-	public $version = "1.0.0";
+	public $version = "1.2.1";
 	
 	private $addon_name = "Cl_github_api";
 	private $has_cp_backend = "y";
