@@ -2,7 +2,7 @@
 
 class Cl_github_api_upd 
 {
-	public $version = "1.2.1";
+	public $version = "1.2.6";
 	
 	private $addon_name = "Cl_github_api";
 	private $has_cp_backend = "y";
@@ -15,7 +15,7 @@ class Cl_github_api_upd
 
 	public function __construct() 
 	{
-		$this->EE &= get_instance();
+		$this->EE =& get_instance();
 		$this->EE->load->add_package_path(dirname(__FILE__));
 	}
 

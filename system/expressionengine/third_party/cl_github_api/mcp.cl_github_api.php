@@ -5,7 +5,7 @@ class Cl_github_api_mcp
 	
 	public function __construct() 
 	{
-		$this->EE &= get_instance();
+		$this->EE =& get_instance();
 		
 		$this->EE->load->model('Cl_github_api_settings_model');
 
