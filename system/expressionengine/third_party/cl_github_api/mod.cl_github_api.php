@@ -9,7 +9,7 @@ class Cl_github_api
 		$this->EE->load->model('Cl_github_api_settings_model');
 		$this->EE->load->helper('module');
 		
-		require_once 'libraries/php-github-api/vendor/autoload.php';
+		require_once dirname(__FILE__) . '/libraries/php-github-api/vendor/autoload.php';
 		$this->client = new Github\Client();
 		$this->client->authenticate(
 			$this->EE->Cl_github_api_settings_model->get('api_access_token'), 
