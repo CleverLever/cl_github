@@ -32,6 +32,7 @@ class Cl_github_api
 		$sort = $this->EE->TMPL->fetch_param('sort');
 		$direction = $this->EE->TMPL->fetch_param('direction');
 		$var_prefix = $this->EE->TMPL->fetch_param('var_prefix');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');
 	
 		// make options array
 		$options = array();
@@ -44,6 +45,7 @@ class Cl_github_api
 
 		$data = array_map("cl_convert_hashmaps_to_sequences", $response);
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
 		
 		if (empty($data)) return $this->EE->TMPL->no_results();	
 
@@ -98,6 +100,7 @@ class Cl_github_api
 		$sort = ($this->EE->TMPL->fetch_param('sort') == 'asc') ? SORT_ASC : SORT_DESC;
 		$limit = $this->EE->TMPL->fetch_param('limit', FALSE);
 		$var_prefix = $this->EE->TMPL->fetch_param('var_prefix');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');
 
 		$response = $this->client->api('repo')->tags($owner, $repo);
 		
@@ -109,6 +112,7 @@ class Cl_github_api
 
 		$data = array_map("cl_convert_hashmaps_to_sequences", $response);
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
 		
 		if (empty($data)) return $this->EE->TMPL->no_results();	
 
@@ -127,6 +131,7 @@ class Cl_github_api
 		$state = $this->EE->TMPL->fetch_param('state');
 		$labels = $this->EE->TMPL->fetch_param('labels', FALSE);
 		$var_prefix = $this->EE->TMPL->fetch_param('var_prefix');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');
 		
 		// make options array
 		$options = array();
@@ -139,6 +144,7 @@ class Cl_github_api
 
 		$data = array_map("cl_convert_hashmaps_to_sequences", $response);
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
 		
 		if (empty($data)) return $this->EE->TMPL->no_results();	
 
@@ -157,6 +163,7 @@ class Cl_github_api
 		$sort = $this->EE->TMPL->fetch_param('sort');
 		$direction = $this->EE->TMPL->fetch_param('direction');
 		$reverse = $this->EE->TMPL->fetch_param('reverse');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');
 
 		$response = $this->client->api('issue')->milestones()->all($owner, $repo, array('state' => $state, 'sort' => $sort, 'direction' => $direction));
 		
@@ -165,6 +172,7 @@ class Cl_github_api
 
 		$data = array_map("cl_convert_hashmaps_to_sequences", $response);
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
 		
 		if (empty($data)) return $this->EE->TMPL->no_results();	
 
@@ -180,11 +188,13 @@ class Cl_github_api
 		$repo = $this->EE->TMPL->fetch_param('repo');
 		$var_prefix = $this->EE->TMPL->fetch_param('var_prefix');
 		$issue_number = $this->EE->TMPL->fetch_param('issue_number');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');
 
 		$response = $this->client->api('issue')->comments()->all($owner, $repo, $issue_number);
 
 		$data = array_map("cl_convert_hashmaps_to_sequencess", $response);
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
 		
 		if (empty($data)) return $this->EE->TMPL->no_results();	
 		
@@ -200,11 +210,13 @@ class Cl_github_api
 		$repo = $this->EE->TMPL->fetch_param('repo');
 		$issue_number = $this->EE->TMPL->fetch_param('issue_number');
 		$var_prefix = $this->EE->TMPL->fetch_param('var_prefix');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');		
 
 		$response = $this->client->api('issue')->events()->all($owner, $repo, $issue_number);
 
 		$data = array_map("cl_convert_hashmaps_to_sequences", $response);
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
 
 		if (empty($data)) return $this->EE->TMPL->no_results();	
 
@@ -220,11 +232,14 @@ class Cl_github_api
 		$repo = $this->EE->TMPL->fetch_param('repo');
 		$sha = $this->EE->TMPL->fetch_param('sha');
 		$var_prefix = $this->EE->TMPL->fetch_param('var_prefix');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');
 		
 		$response = $this->client->api('repo')->commits()->show($owner, $repo, $sha);
 
 		$data = cl_convert_hashmaps_to_sequences($response);	
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
+		
 	
 		if (empty($data)) return $this->EE->TMPL->no_results();	
 
@@ -261,11 +276,13 @@ class Cl_github_api
 		$owner = $this->EE->TMPL->fetch_param('owner');
 		$repo = $this->EE->TMPL->fetch_param('repo');
 		$var_prefix = $this->EE->TMPL->fetch_param('var_prefix');
+		$encode_ee_tags = $this->EE->TMPL->fetch_param('encode_ee_tags');
 		
 		$response = $this->client->api('repo')->show($owner, $repo);
 
 		$data = cl_convert_hashmaps_to_sequences($response);	
 		$data = cl_prefix_array_keys($var_prefix, $data);
+		if (!empty($encode_ee_tags)) $data = cl_encode_ee_tags($data);
 		
 		if (empty($data)) return $this->EE->TMPL->no_results();
 	

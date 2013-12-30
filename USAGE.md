@@ -85,6 +85,10 @@ Lists package downloads available for a repository.
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `downloads:` would produce the variable `{downloads:name}`
 
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
+
 #### Variables
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/repos/downloads/#response) as EE template tags.
@@ -114,6 +118,10 @@ Lists tags for a given repository.
 + var_prefix
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `item:` would produce the variable `{item:name}`
+
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
 
 #### Variables
 
@@ -148,6 +156,10 @@ Lists issues for a given repo.
 + var_prefix
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `item:` would produce the variable `{item:name}`
+
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
 
 #### Variables
 
@@ -187,6 +199,10 @@ Lists milestones for a given repo.
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `item:` would produce the variable `{item:name}`
 
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
+
 #### Variables
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/issues/#response-1) as EE template tags.
@@ -212,6 +228,10 @@ Lists comments for a given issue.
 + var_prefix
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `item:` would produce the variable `{item:name}`
+
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
 
 #### Variables
 
@@ -239,6 +259,10 @@ Returns information about a specific commit.
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `item:` would produce the variable `{item:name}`
 
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
+
 #### Variables
 
 This tag allows full access to the JSON response from the API [located here](http://developer.github.com/v3/git/commits/#response) as EE template tags.
@@ -262,13 +286,13 @@ Get information and contents of a file or directory.
 
   Path to a file or directory.
 
-+ encode_ee_tags
-
-  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
-
 + var_prefix
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `item:` would produce the variable `{item:name}`
+
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
 
 #### Variables
 
@@ -291,6 +315,10 @@ Get information about a specific repository.
 + var_prefix
 
   Allows you to prefix the variables below to prevent name collisions. i.e. `item:` would produce the variable `{item:name}`
+
++ encode_ee_tags
+
+  Encodes expression engine tags so they are not parsed. Either `yes` or `no`.
 
 #### Variables
 
