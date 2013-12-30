@@ -2,7 +2,7 @@
 
 class Cl_github_api_upd 
 {
-	public $version = "1.2.5";
+	public $version = "1.2.7";
 	
 	private $addon_name = "Cl_github_api";
 	private $has_cp_backend = "y";
@@ -34,6 +34,11 @@ class Cl_github_api_upd
 		$this->_uninstall_actions();
 		$this->_uninstall_models();
 
+		return TRUE;
+	}
+	
+	function update($current = '')
+	{
 		return TRUE;
 	}
 	
